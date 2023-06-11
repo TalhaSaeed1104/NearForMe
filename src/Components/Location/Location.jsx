@@ -1,20 +1,13 @@
-import React, { useState, useEffect } from 'react';
-import { Platform, Text, View, StyleSheet } from 'react-native';
-import Device from 'expo-device';
+import React, { useEffect, useState } from 'react';
+import { Text, View } from 'react-native';
 import * as Location from 'expo-location';
 
-export default function App() {
+export default LocationApp = () => {
   const [location, setLocation] = useState(null);
   const [errorMsg, setErrorMsg] = useState(null);
 
   useEffect(() => {
     (async () => {
-      if (Platform.OS === 'android' && !Device.isDevice) {
-        setErrorMsg(
-          'Oops, this will not work on Snack in an Android Emulator. Try it on your device!'
-        );
-        return;
-      }
       let { status } = await Location.requestForegroundPermissionsAsync();
       if (status !== 'granted') {
         setErrorMsg('Permission to access location was denied');
@@ -30,25 +23,12 @@ export default function App() {
   if (errorMsg) {
     text = errorMsg;
   } else if (location) {
-    text = JSON.stringify(location);
+    text = `Latitude: ${location.coords.latitude}, Longitude: ${location.coords.longitude}`;
   }
 
   return (
-    <View style={styles.container}>
-      <Text style={styles.paragraph}>{text}</Text>
+    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+      <Text>{text}</Text>
     </View>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
-    padding: 20,
-  },
-  paragraph: {
-    fontSize: 18,
-    textAlign: 'center',
-  },
-});

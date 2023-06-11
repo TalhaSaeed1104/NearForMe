@@ -17,7 +17,7 @@ const cardData = [
 
 const Items = (props) => {
   const renderCard = ({ item }) => (
-    <TouchableOpacity onPress={()=>props.navigation.navigate('Camera')}>
+    <TouchableOpacity onPress={()=>props.navigation.navigate('Food')}>
       <Card
       title={item.title}
       content={item.content}

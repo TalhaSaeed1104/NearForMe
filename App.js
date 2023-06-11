@@ -8,9 +8,12 @@ import Icon from 'react-native-vector-icons/FontAwesome';
 import HomeScreen from "./src/Components/Home/MainHomePage";
 import  Home  from "./src/Components/Home/Home.jsx";
 import  Items  from "./src/Components/Items/Items.jsx";
+import CompassData from "./src/Components/Compass/Compass.jsx";
 import  Details  from "./src/Components/Details/Details.jsx";
 import ItemsDetails from "./src/Components/ItemDetails/ItemDetails.jsx";
 import CameraApp from "./src/Components/Camera/CameraTry.jsx";
+import LocationApp from "./src/Components/Location/Location.jsx";
+import PlacesApp from "./src/Components/PlacesData/Places.jsx";
 
 // import { Stack } from 'react-bootstrap';
 
@@ -41,10 +44,14 @@ export default function App({ content }) {
             headerStyle: { backgroundColor: 'red' },
             headerTintColor: 'white',
           }}/>
-          <Stack.Screen name='Food' component={Details} options={{
+          <Stack.Screen name='Food' component={PlacesApp} options={{
             headerStyle: { backgroundColor: 'red' },
             headerTintColor: 'white',
           }}/>
+          {/* <Stack.Screen name='Food' component={Details} options={{
+            headerStyle: { backgroundColor: 'red' },
+            headerTintColor: 'white',
+          }}/> */}
           <Stack.Screen name='Details' component={ItemsDetails} options={{
             headerStyle: { backgroundColor: 'red' },
             headerTintColor: 'white',
